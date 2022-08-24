@@ -58,4 +58,33 @@ describe Board do
       end
     end
   end
+
+  describe '#full?' do
+    subject(:board_full) { described_class.new }
+    context 'when a column is not full' do
+      it 'returns false if column 3 has 0 entries' do
+        column = 3
+        result = board_full.full?(column)
+        expect(result).to be false
+      end
+      before do
+        3.times { board_full.update_board('x', 6) }
+      end
+      it 'returns false if column 6 has 3 entries' do
+        column = 6
+        result = board_full.full?(column)
+        expect(result).to be false
+      end
+    end
+    context 'when a column is full' do
+      before do
+        6.times { board_full.update_board('x', 7) }
+      end
+      it 'returns true if column 7 has 6 entries' do
+        column = 7
+        result = board_full.full?(column)
+        expect(result).to be true
+      end
+    end
+  end
 end

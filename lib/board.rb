@@ -20,4 +20,9 @@ class Board
     @state[row][column] = symbol
     @column_filling[column] += 1
   end
+
+  def full?(column)
+    column -= 1
+    @column_filling[column] == 6
+  end
 end
