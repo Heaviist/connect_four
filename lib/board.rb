@@ -15,4 +15,11 @@ class Board
     end
     puts Array(1..7).join(' ')
   end
+
+  def update_board(symbol, column)
+    column -= 1
+    row = @column_filling[column]
+    @state[row][column] = symbol
+    @column_filling[column] += 1
+  end
 end
