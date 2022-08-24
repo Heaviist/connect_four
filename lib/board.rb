@@ -2,15 +2,13 @@
 
 # Class to control the playing board
 class Board
-  attr_reader :state
-
-  def initialize
-    @state = Array.new(6) { Array.new(7, "\u26AA") }
-    @column_filling = Array.new(7, 0)
+  def initialize(state = Array.new(6) { Array.new(7, "\u26AA") }, column_filling = Array.new(7, 0))
+    @state = state
+    @column_filling = column_filling
   end
 
   def display
-    state.reverse.each do |line|
+    @state.reverse.each do |line|
       puts line.join
     end
     puts Array(1..7).join(' ')
