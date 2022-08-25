@@ -2,7 +2,7 @@
 
 # Class to create a Player for the game
 class Player
-  attr_reader :name
+  attr_reader :name, :symbol
 
   def initialize(symbol, player_no)
     @name = player_name(player_no)
