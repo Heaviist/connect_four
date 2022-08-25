@@ -15,6 +15,7 @@ class Board
   end
 
   def update_board(symbol, column)
+    # Column input is the way the user would do it (1-7). Code will compensate for array indices by -1 on the entry
     column -= 1
     row = @column_filling[column]
     @state[row][column] = symbol

@@ -2,4 +2,4 @@
 
 require_relative 'lib/board'
 
-Board.new.display
+Game.new.play

@@ -4,13 +4,13 @@
 class Player
   attr_reader :name
 
-  def initialize(symbol)
-    @name = player_name
+  def initialize(symbol, player_no)
+    @name = player_name(player_no)
     @symbol = symbol
   end
 
-  def player_name
-    puts "Please write the name for player #{@@player_no} and press enter:"
+  def player_name(player)
+    puts "Please write the name for player #{player} and press enter:"
     gets.chomp
   end
 end
