@@ -10,7 +10,7 @@ class Player
   end
 
   def player_name(player)
-    puts "Please write the name for player #{player} and press enter:"
+    puts "\nPlease write the name for player #{player} and press enter:"
     gets.chomp
   end
 end

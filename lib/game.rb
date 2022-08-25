@@ -7,27 +7,36 @@ require_relative 'player'
 class Game
   def initialize
     @board = Board.new
+    introduction
     @player1 = Player.new("\u2611", 1)
     @player2 = Player.new("\u26D4", 2)
     @turn = 0
+    start
   end
-
-  def play
-    @board.display
-    introduction
-    # turn(@current_player)
-  end
-
-  def turn; end
 
   private
 
   def introduction
+    instructions
+    @board.display
+  end
+
+  def start
+    introduce_players
+  end
+
+  def instructions
     puts <<~HEREDOC
 
-      \e[7m\e[36mWelcome to Gravitrips, also known as Connect-Four.\e[0m\e[27m
+        \e[7m\e[36mWelcome to Gravitrips, also known as Connect-Four.\e[0m\e[27m
 
-      Above you can see the game board. The goal of this game is to create a line of 4 of your symbols before your opponent can achieve this. This can be horizontal, vertical or diagonal.
+      Below you can see the game board. The goal of this game is to create a line of 4 of your symbols before your opponent can achieve this. This can be horizontal, vertical or diagonal.
+
+    HEREDOC
+  end
+
+  def introduce_players
+    puts <<~HEREDOC
 
       \e[7m\e[36m#{@player1.name} will play #{@player1.symbol}
 
@@ -36,6 +45,7 @@ class Game
       When it's your turn, you will be asked to type a number from 1 to 7 corresponding to the column where you want to play your symbol. It will fall into that column to the first circle that doesn't contain a player symbol yet.
 
       Good luck!
+
     HEREDOC
   end
 end
