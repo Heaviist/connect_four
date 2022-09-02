@@ -7,22 +7,35 @@ require_relative 'player'
 class Game
   def initialize
     @board = Board.new
-    introduction
     @player1 = Player.new("\u2611", 1)
     @player2 = Player.new("\u26D4", 2)
     @turn = 0
-    start
+    @players = [@player1, @player2]
+    @current_player_index = 0
+  end
+
+  def start
+    instructions
+    sleep 2
+    @board.display
+    sleep 2
+    introduce_players
+    sleep 2
+    play_turn
   end
 
   private
 
-  def introduction
-    instructions
-    @board.display
+  def play_turn
+    # move = player_input(current_player)
   end
 
-  def start
-    introduce_players
+  def current_player
+    @players[@current_player_index]
+  end
+
+  def next_player
+    @current_player_index = (@current_player_index + 1) % @players.size
   end
 
   def instructions
